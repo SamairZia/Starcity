@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -7,9 +7,145 @@
     android:layout_height="match_parent"
     tools:context="com.example.samair.starcity.Signup">
 
-    <TextView
-        android:layout_width="wrap_content"
+    <ScrollView
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="SignUp"/>
+        android:fillViewport="true">
 
-</android.support.constraint.ConstraintLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_signup"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="SignUp"
+                android:textSize="24dp"
+                android:textStyle="bold"
+                android:textAlignment="center"/>
+
+            <TextView
+                android:id="@+id/tv_shopdetail"
+                android:layout_below="@id/tv_signup"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="10dp"
+                android:text="Shop Details"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                android:textAlignment="center"/>
+
+            <EditText
+                android:id="@+id/email_signup"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Email"
+                android:inputType="textEmailAddress"
+                android:layout_marginRight="12dp"
+                android:layout_marginLeft="12dp"/>
+
+            <EditText
+                android:id="@+id/shopName_signup"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Shop Name"
+                android:inputType="text"
+                android:layout_marginRight="12dp"
+                android:layout_marginLeft="12dp"/>
+
+            <EditText
+                android:id="@+id/contact_signup"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Contact Number"
+                android:inputType="phone"
+                android:layout_marginRight="12dp"
+                android:layout_marginLeft="12dp"/>
+
+            <EditText
+                android:id="@+id/repName_signup"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Rep Name"
+                android:inputType="text"
+                android:layout_marginRight="12dp"
+                android:layout_marginLeft="12dp"/>
+
+
+            <EditText
+                android:id="@+id/shopNimber_signup"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Shop Number"
+                android:inputType="text"
+                android:layout_marginRight="12dp"
+                android:layout_marginLeft="12dp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Shop Floor:"
+                android:layout_marginRight="15dp"
+                android:layout_marginLeft="15dp"
+                android:textSize="18sp"/>
+
+            <Spinner
+                android:autofillHints="Select Shop Floor"
+                android:id="@+id/spinnerSelectFloor"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="12dp"
+                android:layout_marginRight="12dp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Shop Type:"
+                android:layout_marginRight="15dp"
+                android:layout_marginLeft="15dp"
+                android:textSize="18sp"/>
+
+            <Spinner
+                android:autofillHints="Select Shop Type"
+                android:id="@+id/spinnerSelectType"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="12dp"
+                android:layout_marginRight="12dp"/>
+
+            <EditText
+                android:id="@+id/password_signup"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Password"
+                android:inputType="textPassword"
+                android:layout_marginRight="12dp"
+                android:layout_marginLeft="12dp"/>
+
+            <EditText
+                android:id="@+id/confirmPassword_signup"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Confirm Password"
+                android:inputType="textPassword"
+                android:layout_marginRight="12dp"
+                android:layout_marginLeft="12dp"/>
+
+            <Button
+                android:id="@+id/btn_signup"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="SignUp"
+                android:layout_marginLeft="12dp"
+                android:layout_marginRight="12dp"
+                />
+
+        </LinearLayout>
+
+    </ScrollView>
+
+
+</RelativeLayout>
