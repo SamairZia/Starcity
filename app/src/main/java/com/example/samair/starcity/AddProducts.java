@@ -194,6 +194,11 @@ public class AddProducts extends AppCompatActivity {
                         name_addproduct.setText("");
                         description_addproduct.setText("");
                         mProgressDialog.dismiss();
+                        imageView1.setVisibility(View.INVISIBLE);
+                        imageView2.setVisibility(View.INVISIBLE);
+                        imageView3.setVisibility(View.INVISIBLE);
+                        imageView4.setVisibility(View.INVISIBLE);
+                        imageView5.setVisibility(View.INVISIBLE);
                         Toast.makeText(getApplicationContext() , "Product Added Successfully" , Toast.LENGTH_LONG).show();
 
                     }
