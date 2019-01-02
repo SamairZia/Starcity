@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.view.ViewPager;
+import android.support.v7.widget.CardView;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -16,9 +17,10 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+        implements NavigationView.OnNavigationItemSelectedListener , View.OnClickListener{
 
     ViewPager viewPager;
+    private CardView search_card, storefinder_card, mallmaps_card, mallinfo_cards, lookcontact_card, directory_card;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +28,23 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        search_card = findViewById(R.id.search_card);
+        storefinder_card = findViewById(R.id.storefinder_card);
+        mallmaps_card = findViewById(R.id.mallmaps_card);
+        mallinfo_cards = findViewById(R.id.mallinfo_cards);
+        lookcontact_card = findViewById(R.id.lookcontact_card);
+        directory_card = findViewById(R.id.directory_card);
+
+        //add click listeners to cards
+//        statsCard.setOnClickListener(this);
+        search_card.setOnClickListener(this);
+        storefinder_card.setOnClickListener(this);
+        mallmaps_card.setOnClickListener(this);
+        mallinfo_cards.setOnClickListener(this);
+        lookcontact_card.setOnClickListener(this);
+        directory_card.setOnClickListener(this);
+
 
         viewPager = findViewById(R.id.viewPager);
 
@@ -116,5 +135,38 @@ public class MainActivity extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    @Override
+    public void onClick(View view) {
+        Intent i;
+
+        switch (view.getId()){
+            case R.id.search_card:
+                i = new Intent(this, Search.class);
+                startActivity(i);
+                break;
+            case R.id.storefinder_card:
+                i = new Intent(this, StoreFinder.class);
+                startActivity(i);
+                break;
+            case R.id.mallmaps_card:
+                i = new Intent(this, MallMap.class);
+                startActivity(i);
+                break;
+            case R.id.mallinfo_cards:
+                i = new Intent(this, MallInfo.class);
+                startActivity(i);
+                break;
+            case R.id.lookcontact_card:
+                i = new Intent(this, LookContacts.class);
+                startActivity(i);
+                break;
+            case R.id.directory_card:
+                i = new Intent(this, Directory.class);
+                startActivity(i);
+                break;
+            default:break;
+        }
     }
 }
