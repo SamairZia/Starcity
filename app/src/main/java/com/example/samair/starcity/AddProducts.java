@@ -173,9 +173,10 @@ public class AddProducts extends AppCompatActivity {
                     @Override
                     public void onComplete(@Nullable DatabaseError databaseError, @NonNull DatabaseReference databaseReference) {
                         String productKey = databaseReference.getKey();
+                        mProgressDialog.dismiss();
                         mProgressDialog.setMessage("Uploading images...");
+                        mProgressDialog.show();
                         for(int i=0; i<productImagesArray.size(); i++){
-
                             Uri uri = Uri.fromFile(new File(productImagesArray.get(i)));
                             StorageReference storageReference = mStorageRef.child("images/" + uidNode + "/" + productKey + "/" +System.currentTimeMillis()/1000  + i +".jpg");
 
@@ -183,6 +184,7 @@ public class AddProducts extends AppCompatActivity {
                                 @Override
                                 public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                                     // Get a URL to the uploaded content
+                                    mProgressDialog.dismiss();
                                     Uri downloadUrl = taskSnapshot.getUploadSessionUri();
                                 }
                             }).addOnFailureListener(new OnFailureListener() {
@@ -193,13 +195,12 @@ public class AddProducts extends AppCompatActivity {
                         }
                         name_addproduct.setText("");
                         description_addproduct.setText("");
-                        mProgressDialog.dismiss();
+
                         imageView1.setVisibility(View.INVISIBLE);
                         imageView2.setVisibility(View.INVISIBLE);
                         imageView3.setVisibility(View.INVISIBLE);
                         imageView4.setVisibility(View.INVISIBLE);
                         imageView5.setVisibility(View.INVISIBLE);
-                        Toast.makeText(getApplicationContext() , "Product Added Successfully" , Toast.LENGTH_LONG).show();
 
                     }
                 });
