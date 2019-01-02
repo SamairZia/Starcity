@@ -1,5 +1,6 @@
 package com.example.samair.starcity;
 
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -127,13 +128,12 @@ public class AddProducts extends AppCompatActivity {
                 saveProductMap.put("Product Type", ptype);
                 saveProductMap.put("Product Manufacturer", pmanufacturer);
 
-                mDBref.child(uidNode).child("Products").setValue(saveProductMap).addOnCompleteListener(new OnCompleteListener<Void>() {
+                mDBref.child(uidNode).child("Products").push().setValue(saveProductMap).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
                         if (task.isSuccessful()) {
                             Toast.makeText(getApplicationContext() , "Product Added Successfully" , Toast.LENGTH_LONG).show();
-                            name_addproduct.setText("");
-                            description_addproduct.setText("");
+                            backToShowProduct();
                         }
                     }
                 });
@@ -141,5 +141,9 @@ public class AddProducts extends AppCompatActivity {
         });
     }
 
+    public void backToShowProduct(){
+        Intent intentBackToShow = new Intent(this, ShowProducts.class);
+        startActivity(intentBackToShow);
+    }
 
 }
