@@ -173,9 +173,9 @@ public class AddProducts extends AppCompatActivity {
                     @Override
                     public void onComplete(@Nullable DatabaseError databaseError, @NonNull DatabaseReference databaseReference) {
                         String productKey = databaseReference.getKey();
-
+                        mProgressDialog.setMessage("Uploading images...");
                         for(int i=0; i<productImagesArray.size(); i++){
-                            mProgressDialog.setMessage("Uploading images...");
+
                             Uri uri = Uri.fromFile(new File(productImagesArray.get(i)));
                             StorageReference storageReference = mStorageRef.child("images/" + uidNode + "/" + productKey + "/" +System.currentTimeMillis()/1000  + i +".jpg");
 
@@ -193,8 +193,9 @@ public class AddProducts extends AppCompatActivity {
                         }
                         name_addproduct.setText("");
                         description_addproduct.setText("");
-                        Toast.makeText(getApplicationContext() , "Product Added Successfully" , Toast.LENGTH_LONG).show();
                         mProgressDialog.dismiss();
+                        Toast.makeText(getApplicationContext() , "Product Added Successfully" , Toast.LENGTH_LONG).show();
+
                     }
                 });
 
@@ -232,30 +233,60 @@ public class AddProducts extends AppCompatActivity {
             case (100): {
                 if (resultCode == Activity.RESULT_OK) {
                     productImagesArray = data.getStringArrayListExtra(Pix.IMAGE_RESULTS);
-                    for (int i=0; i<productImagesArray.size(); i++) {
-                        String s = productImagesArray.get(i);
-                        Log.e("valImage", " ->  " + s);
-                        Uri uri = Uri.fromFile(new File(productImagesArray.get(i)));
+                    for (int i=0; i<5; i++) {
+                        String s = null;
+                        Uri uri = null;
+                        if (i<productImagesArray.size()){
+                            s = productImagesArray.get(i);
+                            Log.e("valImage", " ->  " + s);
+                            uri = Uri.fromFile(new File(productImagesArray.get(i)));
+                        }
                         try {
                             if(i+1 == 1){
-                                imageView1.setImageBitmap(MediaStore.Images.Media.getBitmap(this.getContentResolver(), uri));
-                                imageView1.setVisibility(View.VISIBLE);
+                                if(s == null){
+                                    imageView1.setVisibility(View.INVISIBLE);
+                                }
+                                else {
+                                    imageView1.setImageBitmap(MediaStore.Images.Media.getBitmap(this.getContentResolver(), uri));
+                                    imageView1.setVisibility(View.VISIBLE);
+                                }
+
                             }
                             else if(i+1 == 2){
-                                imageView2.setImageBitmap(MediaStore.Images.Media.getBitmap(this.getContentResolver(), uri));
-                                imageView2.setVisibility(View.VISIBLE);
+                                if(s == null){
+                                    imageView2.setVisibility(View.INVISIBLE);
+                                }
+                                else {
+                                    imageView2.setImageBitmap(MediaStore.Images.Media.getBitmap(this.getContentResolver(), uri));
+                                    imageView2.setVisibility(View.VISIBLE);
+                                }
                             }
                             else if(i+1 == 3){
-                                imageView3.setImageBitmap(MediaStore.Images.Media.getBitmap(this.getContentResolver(), uri));
-                                imageView3.setVisibility(View.VISIBLE);
+                                if(s == null){
+                                    imageView3.setVisibility(View.INVISIBLE);
+                                }
+                                else {
+                                    imageView3.setImageBitmap(MediaStore.Images.Media.getBitmap(this.getContentResolver(), uri));
+                                    imageView3.setVisibility(View.VISIBLE);
+                                }
                             }
                             else if(i+1 == 4){
-                                imageView4.setImageBitmap(MediaStore.Images.Media.getBitmap(this.getContentResolver(), uri));
-                                imageView4.setVisibility(View.VISIBLE);
+                                if(s == null){
+                                    imageView4.setVisibility(View.INVISIBLE);
+                                }
+                                else {
+                                    imageView4.setImageBitmap(MediaStore.Images.Media.getBitmap(this.getContentResolver(), uri));
+                                    imageView4.setVisibility(View.VISIBLE);
+                                }
                             }
                             else if(i+1 == 5){
-                                imageView5.setImageBitmap(MediaStore.Images.Media.getBitmap(this.getContentResolver(), uri));
-                                imageView5.setVisibility(View.VISIBLE);
+                                if(s == null){
+                                    imageView5.setVisibility(View.INVISIBLE);
+                                }
+                                else {
+                                    imageView5.setImageBitmap(MediaStore.Images.Media.getBitmap(this.getContentResolver(), uri));
+                                    imageView5.setVisibility(View.VISIBLE);
+                                }
                             }
                         }
                         catch (IOException e) {
