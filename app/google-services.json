@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "237441922531",
+    "firebase_url": "https://starcity-4d6e6.firebaseio.com",
+    "project_id": "starcity-4d6e6",
+    "storage_bucket": "starcity-4d6e6.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:237441922531:android:b550bc8225aafad1",
+        "android_client_info": {
+          "package_name": "com.example.samair.starcity"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "237441922531-c7at53uf3sh6ujslo8g7o9fndk6llnv6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCLro5uqGVNEFHE3j3V1klLB787hZeVw_s"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
