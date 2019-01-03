@@ -159,66 +159,60 @@ public class AddProducts extends AppCompatActivity {
                 final String pdescription = description_addproduct.getText().toString().trim();
                 final String ptype = productTypeString.toString().trim();
                 final String pmanufacturer = manufacturer.toString().trim();
+                if(!pname.equals("")){
 
-                HashMap<String, String> saveProductMap = new HashMap<>();
-                saveProductMap.put("Product Name", pname);
-                saveProductMap.put("Product Description", pdescription);
-                saveProductMap.put("Product Type", ptype);
-                saveProductMap.put("Product Manufacturer", pmanufacturer);
+                    HashMap<String, String> saveProductMap = new HashMap<>();
+                    saveProductMap.put("Product Name", pname);
+                    saveProductMap.put("Product Description", pdescription);
+                    saveProductMap.put("Product Type", ptype);
+                    saveProductMap.put("Product Manufacturer", pmanufacturer);
 
-                mProgressDialog.setMessage("Adding product...");
-                mProgressDialog.show();
+                    mProgressDialog.setMessage("Adding product...");
+                    mProgressDialog.show();
 
-                mDBref.child(uidNode).child("Products").push().setValue(saveProductMap, new DatabaseReference.CompletionListener() {
-                    @Override
-                    public void onComplete(@Nullable DatabaseError databaseError, @NonNull DatabaseReference databaseReference) {
-                        String productKey = databaseReference.getKey();
-                        mProgressDialog.dismiss();
-                        mProgressDialog.setMessage("Uploading images...");
-                        mProgressDialog.show();
-                        for(int i=0; i<productImagesArray.size(); i++){
-                            Uri uri = Uri.fromFile(new File(productImagesArray.get(i)));
-                            StorageReference storageReference = mStorageRef.child("images/" + uidNode + "/" + productKey + "/" +System.currentTimeMillis()/1000  + i +".jpg");
+                    mDBref.child(uidNode).child("Products").push().setValue(saveProductMap, new DatabaseReference.CompletionListener() {
+                        @Override
+                        public void onComplete(@Nullable DatabaseError databaseError, @NonNull DatabaseReference databaseReference) {
+                            String productKey = databaseReference.getKey();
+                            mProgressDialog.dismiss();
+                            mProgressDialog.setMessage("Uploading images...");
+                            mProgressDialog.show();
+                            for(int i=0; i<productImagesArray.size(); i++){
+                                final Uri uri = Uri.fromFile(new File(productImagesArray.get(i)));
+                                StorageReference storageReference = mStorageRef.child("images/" + uidNode + "/" + productKey + "/" +System.currentTimeMillis()/1000  + i +".jpg");
 
-                            storageReference.putFile(uri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                                @Override
-                                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                                    // Get a URL to the uploaded content
-                                    mProgressDialog.dismiss();
-                                    Uri downloadUrl = taskSnapshot.getUploadSessionUri();
-                                }
-                            }).addOnFailureListener(new OnFailureListener() {
-                                @Override
-                                public void onFailure(@NonNull Exception e) {
-                                }
-                            });
-                        }
-                        name_addproduct.setText("");
-                        description_addproduct.setText("");
-
-                        imageView1.setVisibility(View.INVISIBLE);
-                        imageView2.setVisibility(View.INVISIBLE);
-                        imageView3.setVisibility(View.INVISIBLE);
-                        imageView4.setVisibility(View.INVISIBLE);
-                        imageView5.setVisibility(View.INVISIBLE);
-
-                    }
-                });
-
-
-                        /*.addOnCompleteListener (new OnCompleteListener<Void>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Void> task, DatabaseReference databaseReference) {
-                        String productKey;
-                        if (task.isSuccessful()) {
-                            Toast.makeText(getApplicationContext() , "Product Added Successfully" , Toast.LENGTH_LONG).show();
+                                final int finalI = i;
+                                storageReference.putFile(uri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                                    @Override
+                                    public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                                        // Get a URL to the uploaded content
+                                        if(finalI == productImagesArray.size()-1)
+                                            mProgressDialog.dismiss();
+                                        Uri downloadUrl = taskSnapshot.getUploadSessionUri();
+                                    }
+                                }).addOnFailureListener(new OnFailureListener() {
+                                    @Override
+                                    public void onFailure(@NonNull Exception e) {
+                                    }
+                                });
+                            }
                             name_addproduct.setText("");
                             description_addproduct.setText("");
-                            productKey = databaseReference.getKey();
+
+                            imageView1.setVisibility(View.INVISIBLE);
+                            imageView2.setVisibility(View.INVISIBLE);
+                            imageView3.setVisibility(View.INVISIBLE);
+                            imageView4.setVisibility(View.INVISIBLE);
+                            imageView5.setVisibility(View.INVISIBLE);
 
                         }
-                    }
-                });*/
+                    });
+                }
+                else
+                {
+                    Toast.makeText(getApplicationContext() , "Enter Product Name" , Toast.LENGTH_LONG).show();
+                }
+
             }
         });
 

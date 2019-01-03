@@ -7,6 +7,8 @@
     <color name="colorLight">#f7f7f7</color>
     <color name="colorLightDark">#eaeaea</color>
 
+    <color name="colorTransparent">#00ffffff</color>
+
     <!--OLD colors-->
     <!--<color name="colorPrimary">#3F51B5</color>-->
     <!--<color name="colorPrimaryDark">#303F9F</color>-->
