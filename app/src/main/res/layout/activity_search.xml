@@ -27,7 +27,7 @@
             android:id="@+id/et_search"
             android:layout_width="250dp"
             android:layout_height="50dp"
-            android:hint="Shop Name"
+            android:hint="Search by Name, Model or Brand"
             android:inputType="text"
             android:layout_marginRight="12dp"
             android:layout_marginLeft="12dp"/>

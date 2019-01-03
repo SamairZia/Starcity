@@ -53,12 +53,12 @@ public class Search extends AppCompatActivity {
         btn_search.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 Query query = reference.child("Users");
                 query.addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                        if (dataSnapshot.exists())
-                        {
+                        if (dataSnapshot.exists()){
                             for(DataSnapshot val : dataSnapshot.getChildren()){
                                 if(val.child("Products").exists()){
                                     for (DataSnapshot product : val.child("Products").getChildren()){
@@ -67,9 +67,13 @@ public class Search extends AppCompatActivity {
                                             productInfo.add(product.child("Product Name").getValue().toString());
                                             productInfo.add(product.child("Product Manufacturer").getValue().toString());
                                             productInfo.add(product.child("Product Type").getValue().toString());
-                                            productInfo.add(val.getKey()); //user key
-                                            productInfo.add(product.getKey()); //product key
-
+                                            if(product.child("imagesUrl").exists()) {
+                                                for (DataSnapshot imageUrl : product.child("imagesUrl").getChildren()) {
+                                                    productInfo.add(imageUrl.getValue().toString());
+                                                }
+                                            }else {
+                                                productInfo.add("https://firebasestorage.googleapis.com/v0/b/starcity-4d6e6.appspot.com/o/No_Image.png?alt=media&token=a99878fd-807c-4982-a156-7d118f2f7732");
+                                            }
                                             productList.add(productInfo);
                                         }
                                     }

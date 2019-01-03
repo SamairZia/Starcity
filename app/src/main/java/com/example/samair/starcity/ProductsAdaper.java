@@ -10,8 +10,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.StorageReference;
+import com.bumptech.glide.request.RequestOptions;
 
 import java.util.ArrayList;
 
@@ -19,7 +18,6 @@ public class ProductsAdaper extends RecyclerView.Adapter<RecyclerView.ViewHolder
     private ArrayList<ArrayList<String>> list = new ArrayList<>();
 
     private Context context;
-    StorageReference storageReference;
 
     public ProductsAdaper(Context context){
         this.context = context;
@@ -48,12 +46,15 @@ public class ProductsAdaper extends RecyclerView.Adapter<RecyclerView.ViewHolder
 
         // Reference to an image file in Cloud Storage
 
-        storageReference = FirebaseStorage.getInstance().getReference().child("images/"+list.get(position).get(3)+"/"+list.get(position).get(4));
+        RequestOptions options = new RequestOptions()
+                .centerCrop()
+                .placeholder(R.drawable.noimage)
+                .error(R.drawable.noimage);
 
-//        for (StorageReference reference: storageReference.get)
-//        GlideApp.with(context /* context */)
-//                .load(storageReference)
-//                .into(((Holder) holder).iv);
+        GlideApp.with(context /* context */)
+                .load(list.get(position).get(3))
+                .apply(options)
+                .into(((Holder) holder).iv);
 
     }
 
