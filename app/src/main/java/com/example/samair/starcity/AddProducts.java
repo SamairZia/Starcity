@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
 import android.net.Uri;
 import android.provider.MediaStore;
 import android.support.annotation.NonNull;
@@ -22,6 +23,7 @@ import android.widget.Toast;
 
 import com.fxn.pix.Pix;
 import com.fxn.utility.PermUtil;
+import com.google.android.gms.tasks.Continuation;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -35,6 +37,7 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
 import java.sql.Time;
@@ -55,7 +58,7 @@ public class AddProducts extends AppCompatActivity {
 
     String productImage = "";
     String productType[] = {"New", "Used", "Refurbished"};
-    String manufacturers[] = {"Samsung", "Apple", "LG", "Motorolla"};
+    String manufacturers[] = {"Samsung", "Apple", "LG", "Motorola", "Nokia", "Huawei"};
 
     String productTypeString, manufacturer;
 
@@ -134,7 +137,13 @@ public class AddProducts extends AppCompatActivity {
                         manufacturer = "LG";
                         break;
                     case 3:
-                        manufacturer = "Motorolla";
+                        manufacturer = "Motorola";
+                        break;
+                    case 4:
+                        manufacturer = "Nokia";
+                        break;
+                    case 5:
+                        manufacturer = "Huawei";
                         break;
                 }
             }
@@ -173,32 +182,89 @@ public class AddProducts extends AppCompatActivity {
                     mDBref.child(uidNode).child("Products").push().setValue(saveProductMap, new DatabaseReference.CompletionListener() {
                         @Override
                         public void onComplete(@Nullable DatabaseError databaseError, @NonNull DatabaseReference databaseReference) {
-                            String productKey = databaseReference.getKey();
+                            final String productKey = databaseReference.getKey();
                             mProgressDialog.dismiss();
                             mProgressDialog.setMessage("Uploading images...");
                             mProgressDialog.show();
                             for(int i=0; i<productImagesArray.size(); i++){
                                 final Uri uri = Uri.fromFile(new File(productImagesArray.get(i)));
-                                StorageReference storageReference = mStorageRef.child("images/" + uidNode + "/" + productKey + "/" +System.currentTimeMillis()/1000  + i +".jpg");
-
+                                final StorageReference storageReference = mStorageRef.child("images/" + uidNode + "/" + productKey + "/" +System.currentTimeMillis()/1000  + i +".jpg");
+                                final int finalImagesArraySize = productImagesArray.size() - 1;
                                 final int finalI = i;
-                                storageReference.putFile(uri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+
+                                Bitmap bmp = null;
+                                try {
+                                    bmp = MediaStore.Images.Media.getBitmap(getContentResolver(), uri);
+                                } catch (IOException e) {
+                                    e.printStackTrace();
+                                }
+                                ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                                if (bmp != null) {
+                                    bmp.compress(Bitmap.CompressFormat.JPEG, 25, baos);
+                                }
+                                byte[] data = baos.toByteArray();
+
+                                UploadTask task = storageReference.putBytes(data);
+
+                                Task<Uri> urlTask = task.continueWithTask(new Continuation<UploadTask.TaskSnapshot, Task<Uri>>() {
                                     @Override
-                                    public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                                        // Get a URL to the uploaded content
-                                        if(finalI == productImagesArray.size()-1)
-                                            mProgressDialog.dismiss();
-                                        Uri downloadUrl = taskSnapshot.getUploadSessionUri();
+                                    public Task<Uri> then(@NonNull Task<UploadTask.TaskSnapshot> task) throws Exception {
+                                        if (!task.isSuccessful()) {
+                                            Toast.makeText(AddProducts.this, "Fail UPLOAD", Toast.LENGTH_SHORT).show();
+
+                                        }
+
+                                        return storageReference.getDownloadUrl();
+                                    }
+                                }).addOnCompleteListener(new OnCompleteListener<Uri>() {
+                                    @Override
+                                    public void onComplete(@NonNull Task<Uri> task) {
+                                        if (task.isSuccessful()) {
+                                            Uri downloadUri = task.getResult();
+                                            if(finalI == finalImagesArraySize)
+                                                mProgressDialog.dismiss();
+                                            mDBref.child(uidNode).child("Products/"+productKey).child("imagesUrl").push().setValue(downloadUri.toString());
+                                            // Continue with the task to get the download URL
+                                        } else {
+                                            Toast.makeText(AddProducts.this, "Fail UPLOAD", Toast.LENGTH_SHORT).show();
+                                        }
+                                    }
+                                }).addOnSuccessListener(new OnSuccessListener<Uri>() {
+                                    @Override
+                                    public void onSuccess(Uri uri) {
+                                        mProgressDialog.setMessage("Images Uploaded.");
                                     }
                                 }).addOnFailureListener(new OnFailureListener() {
                                     @Override
                                     public void onFailure(@NonNull Exception e) {
+                                        mProgressDialog.dismiss();
+                                        Toast.makeText(AddProducts.this, "" + e.getMessage(), Toast.LENGTH_SHORT).show();
                                     }
                                 });
+
+                                /*task.addOnCompleteListener(new OnCompleteListener<UploadTask.TaskSnapshot>() {
+                                    @Override
+                                    public void onComplete(@NonNull Task<UploadTask.TaskSnapshot> task) {
+                                        // Get a URL to the uploaded content
+                                        if(task.isSuccessful()){
+                                            if(finalI == finalImagesArraySize)
+                                                mProgressDialog.dismiss();
+                                            Uri downloadUrl = task.getResult().getMetadata().getReference().getDownloadUrl().getResult();
+                                            mDBref.child(uidNode).child("Products/"+productKey).child("imagesUrl").push().setValue(downloadUrl.toString());
+                                        } else{
+                                            Toast.makeText(AddProducts.this, "Fail UPLOAD", Toast.LENGTH_SHORT).show();
+                                        }
+                                    }
+                                }).addOnFailureListener(new OnFailureListener() {
+                                    @Override
+                                    public void onFailure(@NonNull Exception e) {
+                                        Toast.makeText(AddProducts.this, "Fail UPLOAD", Toast.LENGTH_SHORT).show();
+                                    }
+                                });*/
                             }
                             name_addproduct.setText("");
                             description_addproduct.setText("");
-
+                            productImagesArray = null;
                             imageView1.setVisibility(View.INVISIBLE);
                             imageView2.setVisibility(View.INVISIBLE);
                             imageView3.setVisibility(View.INVISIBLE);
