@@ -34,7 +34,7 @@ public class Search extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
 
-        RecyclerView recyclerView = findViewById(R.id.recyclerView);
+        final RecyclerView recyclerView = findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new GridLayoutManager(this, 2));
         productsAdapter = new ProductsAdapter(this);
 
@@ -43,12 +43,13 @@ public class Search extends AppCompatActivity {
         reference = FirebaseDatabase.getInstance().getReference();
         recyclerView.setAdapter(productsAdapter);
 
-        productList = new ArrayList<>();
+
 
         btn_search.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                recyclerView.removeAllViews();
+                productList = new ArrayList<>();
                 Query query = reference.child("Users");
                 final String searchValue = editSearch.getText().toString().toLowerCase();
                 query.addListenerForSingleValueEvent(new ValueEventListener() {
