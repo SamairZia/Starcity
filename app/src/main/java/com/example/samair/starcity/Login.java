@@ -14,9 +14,8 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
-public class login extends AppCompatActivity {
+public class Login extends AppCompatActivity {
 
-    private Button btn_login;
     private EditText email_login, password_login;
     private FirebaseAuth authLogin;
 
@@ -26,7 +25,7 @@ public class login extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        btn_login = findViewById(R.id.btn_login);
+        Button btn_login = findViewById(R.id.btn_login);
         email_login = findViewById(R.id.email_login);
         password_login = findViewById(R.id.password_login);
 

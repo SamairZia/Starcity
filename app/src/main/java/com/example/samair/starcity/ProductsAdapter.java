@@ -14,16 +14,16 @@ import com.bumptech.glide.request.RequestOptions;
 
 import java.util.ArrayList;
 
-public class ProductsAdaper extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
+public class ProductsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
     private ArrayList<ArrayList<String>> list = new ArrayList<>();
 
     private Context context;
 
-    public ProductsAdaper(Context context){
+    ProductsAdapter(Context context){
         this.context = context;
     }
 
-    public void addProduct(ArrayList<ArrayList<String>> list){
+    void addProduct(ArrayList<ArrayList<String>> list){
         this.list.clear();
         this.list.addAll(list);
         notifyDataSetChanged();

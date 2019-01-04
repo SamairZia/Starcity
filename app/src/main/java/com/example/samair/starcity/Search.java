@@ -3,7 +3,7 @@ package com.example.samair.starcity;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.EditText;
@@ -18,16 +18,11 @@ import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Set;
 
 public class Search extends AppCompatActivity {
 
-    private RecyclerView recyclerView;
     private EditText editSearch;
-    private ImageButton btn_search;
-    private ProductsAdaper productsAdaper;
+    private ProductsAdapter productsAdapter;
 
     private DatabaseReference reference;
 
@@ -39,14 +34,14 @@ public class Search extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
 
-        recyclerView = findViewById(R.id.recyclerView);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        productsAdaper = new ProductsAdaper(this);
+        RecyclerView recyclerView = findViewById(R.id.recyclerView);
+        recyclerView.setLayoutManager(new GridLayoutManager(this, 2));
+        productsAdapter = new ProductsAdapter(this);
 
         editSearch = findViewById(R.id.et_search);
-        btn_search = findViewById(R.id.btn_search);
+        ImageButton btn_search = findViewById(R.id.btn_search);
         reference = FirebaseDatabase.getInstance().getReference();
-        recyclerView.setAdapter(productsAdaper);
+        recyclerView.setAdapter(productsAdapter);
 
         productList = new ArrayList<>();
 
@@ -55,6 +50,7 @@ public class Search extends AppCompatActivity {
             public void onClick(View view) {
 
                 Query query = reference.child("Users");
+                final String searchValue = editSearch.getText().toString().toLowerCase();
                 query.addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -62,7 +58,9 @@ public class Search extends AppCompatActivity {
                             for(DataSnapshot val : dataSnapshot.getChildren()){
                                 if(val.child("Products").exists()){
                                     for (DataSnapshot product : val.child("Products").getChildren()){
-                                        if(product.child("Product Manufacturer").getValue(String.class).toLowerCase().contains(editSearch.getText().toString().toLowerCase()) || product.child("Product Name").getValue(String.class).toLowerCase().contains(editSearch.getText().toString().toLowerCase())){
+                                        String productManufacturer = product.child("Product Manufacturer").getValue().toString().toLowerCase();
+                                        String productName = product.child("Product Name").getValue().toString().toLowerCase();
+                                        if( productManufacturer.contains(searchValue) || productName.contains(searchValue)){
                                             productInfo = new ArrayList<>();
                                             productInfo.add(product.child("Product Name").getValue().toString());
                                             productInfo.add(product.child("Product Manufacturer").getValue().toString());
@@ -82,7 +80,7 @@ public class Search extends AppCompatActivity {
                             if(productList.isEmpty())
                                 Toast.makeText(getApplicationContext(), "No Product Found", Toast.LENGTH_LONG).show();
                             else
-                                productsAdaper.addProduct(productList);
+                                productsAdapter.addProduct(productList);
                         }
                     }
 

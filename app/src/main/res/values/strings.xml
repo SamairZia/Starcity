@@ -7,7 +7,7 @@
     <string name="action_settings">Settings</string>
     <string name="title_activity_login_new">Sign in</string>
 
-    <!-- Strings related to login -->
+    <!-- Strings related to Login -->
     <string name="prompt_email">Email</string>
     <string name="prompt_password">Password (optional)</string>
     <string name="action_sign_in">Sign in or register</string>
@@ -19,4 +19,7 @@
     <string name="permission_rationale">"Contacts permissions are needed for providing email
         completions."
     </string>
+    <string name="text_search">Search</string>
+    <string name="text_searchBy">Search by Name, Model or Brand</string>
+    <string name="todo">To call data from firebase based on what is added in search string</string>
 </resources>

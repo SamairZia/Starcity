@@ -40,23 +40,18 @@ import com.google.firebase.storage.UploadTask;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
-import java.sql.Time;
-import java.time.Instant;
 import java.util.ArrayList;
 import java.util.HashMap;
 
 public class AddProducts extends AppCompatActivity {
 
-    private Button btn_saveProduct, btn_chooseImage;
     private EditText name_addproduct, description_addproduct;
-    private Spinner spinnerProductType, spinnerManufacturer;
     private String user_UID;
     private ImageView imageView1, imageView2, imageView3, imageView4, imageView5;
     private ArrayList<String> productImagesArray;
 
     private ProgressDialog mProgressDialog;
 
-    String productImage = "";
     String productType[] = {"New", "Used", "Refurbished"};
     String manufacturers[] = {"Samsung", "Apple", "LG", "Motorola", "Nokia", "Huawei"};
 
@@ -64,12 +59,9 @@ public class AddProducts extends AppCompatActivity {
 
     ArrayAdapter<String> productTypeAdapter, manufacturerAdapter;
 
-    private FirebaseAuth mAuth;
-    private FirebaseDatabase mDB;
     private DatabaseReference mDBref;
     private StorageReference mStorageRef;
 
-    private FirebaseAuth.AuthStateListener mAuthListener;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,8 +70,8 @@ public class AddProducts extends AppCompatActivity {
 
         mProgressDialog = new ProgressDialog(AddProducts.this);
 
-        btn_saveProduct = findViewById(R.id.btn_saveProduct);
-        btn_chooseImage = findViewById(R.id.btn_chooseImage);
+        Button btn_saveProduct = findViewById(R.id.btn_saveProduct);
+        Button btn_chooseImage = findViewById(R.id.btn_chooseImage);
         name_addproduct = findViewById(R.id.name_addproduct);
         description_addproduct = findViewById(R.id.description_addproduct);
 
@@ -89,14 +81,14 @@ public class AddProducts extends AppCompatActivity {
         imageView4 = findViewById(R.id.image_product4);
         imageView5 = findViewById(R.id.image_product5);
 
-        spinnerProductType = findViewById(R.id.spinnerProductType);
-        spinnerManufacturer = findViewById(R.id.spinnerManufacturer);
+        Spinner spinnerProductType = findViewById(R.id.spinnerProductType);
+        Spinner spinnerManufacturer = findViewById(R.id.spinnerManufacturer);
 
-        mAuth = FirebaseAuth.getInstance();
+        FirebaseAuth mAuth = FirebaseAuth.getInstance();
         mDBref =  FirebaseDatabase.getInstance().getReference().child("Users");
 
-        productTypeAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,productType);
-        manufacturerAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,manufacturers);
+        productTypeAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1,productType);
+        manufacturerAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1,manufacturers);
 
         spinnerProductType.setAdapter(productTypeAdapter);
         spinnerManufacturer.setAdapter(manufacturerAdapter);
@@ -155,7 +147,9 @@ public class AddProducts extends AppCompatActivity {
         });
 
         FirebaseUser new_user = mAuth.getCurrentUser();
-        user_UID = new_user.getUid();
+        if (new_user != null) {
+            user_UID = new_user.getUid();
+        }
 
         final String uidNode = user_UID;
 
@@ -166,8 +160,8 @@ public class AddProducts extends AppCompatActivity {
             public void onClick(View view) {
                 final String pname = name_addproduct.getText().toString().trim();
                 final String pdescription = description_addproduct.getText().toString().trim();
-                final String ptype = productTypeString.toString().trim();
-                final String pmanufacturer = manufacturer.toString().trim();
+                final String ptype = productTypeString.trim();
+                final String pmanufacturer = manufacturer.trim();
                 if(!pname.equals("")){
 
                     HashMap<String, String> saveProductMap = new HashMap<>();
@@ -206,9 +200,9 @@ public class AddProducts extends AppCompatActivity {
 
                                 UploadTask task = storageReference.putBytes(data);
 
-                                Task<Uri> urlTask = task.continueWithTask(new Continuation<UploadTask.TaskSnapshot, Task<Uri>>() {
+                                task.continueWithTask(new Continuation<UploadTask.TaskSnapshot, Task<Uri>>() {
                                     @Override
-                                    public Task<Uri> then(@NonNull Task<UploadTask.TaskSnapshot> task) throws Exception {
+                                    public Task<Uri> then(@NonNull Task<UploadTask.TaskSnapshot> task) {
                                         if (!task.isSuccessful()) {
                                             Toast.makeText(AddProducts.this, "Fail UPLOAD", Toast.LENGTH_SHORT).show();
 
@@ -223,7 +217,9 @@ public class AddProducts extends AppCompatActivity {
                                             Uri downloadUri = task.getResult();
                                             if(finalI == finalImagesArraySize)
                                                 mProgressDialog.dismiss();
-                                            mDBref.child(uidNode).child("Products/"+productKey).child("imagesUrl").push().setValue(downloadUri.toString());
+                                            if (downloadUri != null) {
+                                                mDBref.child(uidNode).child("Products/"+productKey).child("imagesUrl").push().setValue(downloadUri.toString());
+                                            }
                                             // Continue with the task to get the download URL
                                         } else {
                                             Toast.makeText(AddProducts.this, "Fail UPLOAD", Toast.LENGTH_SHORT).show();

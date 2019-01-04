@@ -2,8 +2,7 @@ package com.example.samair.starcity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
+import android.support.annotation.NonNull;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.CardView;
 import android.view.View;
@@ -20,21 +19,20 @@ public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener , View.OnClickListener{
 
     ViewPager viewPager;
-    private CardView search_card, storefinder_card, mallmaps_card, mallinfo_cards, lookcontact_card, directory_card;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        search_card = findViewById(R.id.search_card);
-        storefinder_card = findViewById(R.id.storefinder_card);
-        mallmaps_card = findViewById(R.id.mallmaps_card);
-        mallinfo_cards = findViewById(R.id.mallinfo_cards);
-        lookcontact_card = findViewById(R.id.lookcontact_card);
-        directory_card = findViewById(R.id.directory_card);
+        CardView search_card = findViewById(R.id.search_card);
+        CardView storefinder_card = findViewById(R.id.storefinder_card);
+        CardView mallmaps_card = findViewById(R.id.mallmaps_card);
+        CardView mallinfo_cards = findViewById(R.id.mallinfo_cards);
+        CardView lookcontact_card = findViewById(R.id.lookcontact_card);
+        CardView directory_card = findViewById(R.id.directory_card);
 
         //add click listeners to cards
 //        statsCard.setOnClickListener(this);
@@ -61,19 +59,19 @@ public class MainActivity extends AppCompatActivity
 //            }
 //        });
 
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
     }
 
     @Override
     public void onBackPressed() {
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
@@ -92,8 +90,8 @@ public class MainActivity extends AppCompatActivity
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
+//         as you specify a parent activity in AndroidManifest.xml.
+//        int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
 //        if (id == R.id.action_settings) {
@@ -105,12 +103,12 @@ public class MainActivity extends AppCompatActivity
 
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
-    public boolean onNavigationItemSelected(MenuItem item) {
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
         if (id == R.id.nav_login) {
-            Intent intentLogin = new Intent(this, login.class);
+            Intent intentLogin = new Intent(this, Login.class);
             startActivity(intentLogin);
 
         } else if (id == R.id.nav_signup) {
@@ -132,7 +130,7 @@ public class MainActivity extends AppCompatActivity
 //
 //        }
 
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }

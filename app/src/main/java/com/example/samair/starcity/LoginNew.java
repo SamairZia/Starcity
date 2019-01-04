@@ -35,7 +35,7 @@ import java.util.List;
 import static android.Manifest.permission.READ_CONTACTS;
 
 /**
- * A login screen that offers login via email/password.
+ * A Login screen that offers Login via email/password.
  */
 public class LoginNew extends AppCompatActivity implements LoaderCallbacks<Cursor> {
 
@@ -52,7 +52,7 @@ public class LoginNew extends AppCompatActivity implements LoaderCallbacks<Curso
             "foo@example.com:hello", "bar@example.com:world"
     };
     /**
-     * Keep track of the login task to ensure we can cancel it if requested.
+     * Keep track of the Login task to ensure we can cancel it if requested.
      */
     private UserLoginTask mAuthTask = null;
 
@@ -66,7 +66,7 @@ public class LoginNew extends AppCompatActivity implements LoaderCallbacks<Curso
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_new);
-        // Set up the login form.
+        // Set up the Login form.
         mEmailView = (AutoCompleteTextView) findViewById(R.id.email);
         populateAutoComplete();
 
@@ -139,9 +139,9 @@ public class LoginNew extends AppCompatActivity implements LoaderCallbacks<Curso
 
 
     /**
-     * Attempts to sign in or register the account specified by the login form.
+     * Attempts to sign in or register the account specified by the Login form.
      * If there are form errors (invalid email, missing fields, etc.), the
-     * errors are presented and no actual login attempt is made.
+     * errors are presented and no actual Login attempt is made.
      */
     private void attemptLogin() {
         if (mAuthTask != null) {
@@ -152,7 +152,7 @@ public class LoginNew extends AppCompatActivity implements LoaderCallbacks<Curso
         mEmailView.setError(null);
         mPasswordView.setError(null);
 
-        // Store values at the time of the login attempt.
+        // Store values at the time of the Login attempt.
         String email = mEmailView.getText().toString();
         String password = mPasswordView.getText().toString();
 
@@ -178,12 +178,12 @@ public class LoginNew extends AppCompatActivity implements LoaderCallbacks<Curso
         }
 
         if (cancel) {
-            // There was an error; don't attempt login and focus the first
+            // There was an error; don't attempt Login and focus the first
             // form field with an error.
             focusView.requestFocus();
         } else {
             // Show a progress spinner, and kick off a background task to
-            // perform the user login attempt.
+            // perform the user Login attempt.
             showProgress(true);
             mAuthTask = new UserLoginTask(email, password);
             mAuthTask.execute((Void) null);
@@ -201,7 +201,7 @@ public class LoginNew extends AppCompatActivity implements LoaderCallbacks<Curso
     }
 
     /**
-     * Shows the progress UI and hides the login form.
+     * Shows the progress UI and hides the Login form.
      */
     @TargetApi(Build.VERSION_CODES.HONEYCOMB_MR2)
     private void showProgress(final boolean show) {
@@ -291,7 +291,7 @@ public class LoginNew extends AppCompatActivity implements LoaderCallbacks<Curso
     }
 
     /**
-     * Represents an asynchronous login/registration task used to authenticate
+     * Represents an asynchronous Login/registration task used to authenticate
      * the user.
      */
     public class UserLoginTask extends AsyncTask<Void, Void, Boolean> {
