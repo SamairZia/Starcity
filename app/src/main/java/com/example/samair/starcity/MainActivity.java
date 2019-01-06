@@ -15,6 +15,16 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.example.samair.starcity.Adapter.ViewPagerAdapter;
+import com.example.samair.starcity.Dashboard.Event;
+import com.example.samair.starcity.Dashboard.MallInfo;
+import com.example.samair.starcity.Dashboard.MallMap;
+import com.example.samair.starcity.Dashboard.Promotion;
+import com.example.samair.starcity.Dashboard.Search;
+import com.example.samair.starcity.Dashboard.StoreFinder;
+import com.example.samair.starcity.User.Login;
+import com.example.samair.starcity.User.Signup;
+
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener , View.OnClickListener{
 
@@ -157,14 +167,15 @@ public class MainActivity extends AppCompatActivity
                 startActivity(i);
                 break;
             case R.id.lookcontact_card:
-                i = new Intent(this, LookContacts.class);
+                i = new Intent(this, Promotion.class);
                 startActivity(i);
                 break;
             case R.id.directory_card:
-                i = new Intent(this, Directory.class);
+                i = new Intent(this, Event.class);
                 startActivity(i);
                 break;
-            default:break;
+            default:
+                break;
         }
     }
 }

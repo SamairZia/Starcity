@@ -29,33 +29,33 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".Login">
+        <activity android:name=".User.Login">
         </activity>
-        <activity android:name=".Signup">
+        <activity android:name=".User.Signup">
         </activity>
         <activity android:name=".About">
         </activity>
         <activity android:name=".Contact">
         </activity>
-        <activity android:name=".Search">
+        <activity android:name=".Dashboard.Search">
         </activity>
-        <activity android:name=".StoreFinder">
+        <activity android:name=".Dashboard.StoreFinder">
         </activity>
-        <activity android:name=".MallMap">
+        <activity android:name=".Dashboard.MallMap">
         </activity>
-        <activity android:name=".MallInfo">
+        <activity android:name=".Dashboard.MallInfo">
         </activity>
-        <activity android:name=".LookContacts">
+        <activity android:name=".Dashboard.Promotion">
         </activity>
-        <activity android:name=".Directory">
+        <activity android:name=".Dashboard.Event">
         </activity>
         <activity
             android:name=".LoginNew"
             android:label="@string/title_activity_login_new">
         </activity>
-        <activity android:name=".ShowProducts">
+        <activity android:name=".User.ShowProducts">
         </activity>
-        <activity android:name=".AddProducts">
+        <activity android:name=".User.AddProducts">
         </activity>
     </application>
 

@@ -1,4 +1,4 @@
-package com.example.samair.starcity;
+package com.example.samair.starcity.Dashboard;
 
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -10,6 +10,8 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
+import com.example.samair.starcity.Adapter.ProductsAdapter;
+import com.example.samair.starcity.R;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;

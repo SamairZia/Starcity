@@ -1,13 +1,15 @@
-package com.example.samair.starcity;
+package com.example.samair.starcity.Dashboard;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-public class Directory extends AppCompatActivity {
+import com.example.samair.starcity.R;
+
+public class Promotion extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_directory);
+        setContentView(R.layout.activity_look_contacts);
     }
 }

@@ -1,4 +1,4 @@
-package com.example.samair.starcity;
+package com.example.samair.starcity.User;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
@@ -21,6 +21,7 @@ import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.example.samair.starcity.R;
 import com.fxn.pix.Pix;
 import com.fxn.utility.PermUtil;
 import com.google.android.gms.tasks.Continuation;

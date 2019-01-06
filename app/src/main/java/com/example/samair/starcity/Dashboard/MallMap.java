@@ -1,13 +1,15 @@
-package com.example.samair.starcity;
+package com.example.samair.starcity.Dashboard;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-public class StoreFinder extends AppCompatActivity {
+import com.example.samair.starcity.R;
+
+public class MallMap extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_store_finder);
+        setContentView(R.layout.activity_mall_map);
     }
 }

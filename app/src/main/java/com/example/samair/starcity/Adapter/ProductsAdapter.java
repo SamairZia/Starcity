@@ -1,4 +1,4 @@
-package com.example.samair.starcity;
+package com.example.samair.starcity.Adapter;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
@@ -11,6 +11,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.request.RequestOptions;
+import com.example.samair.starcity.Library.GlideApp;
+import com.example.samair.starcity.R;
 
 import java.util.ArrayList;
 
@@ -19,11 +21,11 @@ public class ProductsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
 
     private Context context;
 
-    ProductsAdapter(Context context){
+    public ProductsAdapter(Context context){
         this.context = context;
     }
 
-    void addProduct(ArrayList<ArrayList<String>> list){
+    public void addProduct(ArrayList<ArrayList<String>> list){
         this.list.clear();
         this.list.addAll(list);
         notifyDataSetChanged();
