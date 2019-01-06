@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -7,9 +7,68 @@
     android:layout_height="match_parent"
     tools:context="com.example.samair.starcity.Dashboard.MallInfo">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Mall Information"/>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
 
-</android.support.constraint.ConstraintLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="180dp"
+                android:src="@drawable/daylight"/>
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Star City Shopping Mall"
+                android:textStyle="bold"
+                android:textSize="16sp"
+                android:textAlignment="center"
+                android:paddingTop="10dp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Star City mall is a splendid mobile shopping mall that covers a lot of variety of Mobile phones, electronic goods and gadgets under one roof. Its one of the leading mobile phone mall from all over Pakistan that has a unique way of online shopping and have wholesale and retail stores."
+                android:padding="13dp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Project Information:"
+                android:textStyle="bold"
+                android:textSize="16sp"
+                android:paddingLeft="13dp"
+                android:layout_marginBottom="8dp"
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="- Location: Garden Road, Saddar, Karachi.\n
+- Covered Area: 2,45,000 Sft\n
+- Floors: Basement + Ground + 4 Floors Shops + 6 Floor office Building.\n
+- Description: Commercial cum Office\n
+- Owner: S and A Builders\n
+- Architect: Bashir and Associates.\n
+- Completion: 2010\n
+- Service Rendered Design and Supervision of: Air conditioning and Mechanical Ventilation (ACMV) Air conditioning of shops and corridors with 3- 450 tons capacity DGF Chillers Plumbing and Sanitary Services
+
+"
+                android:textSize="16sp"
+                android:paddingLeft="13dp"
+                android:paddingBottom="10dp"
+                />
+
+        </LinearLayout>
+
+    </ScrollView>
+
+
+</RelativeLayout>

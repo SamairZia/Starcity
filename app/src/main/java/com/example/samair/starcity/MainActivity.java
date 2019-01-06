@@ -41,8 +41,8 @@ public class MainActivity extends AppCompatActivity
         CardView storefinder_card = findViewById(R.id.storefinder_card);
         CardView mallmaps_card = findViewById(R.id.mallmaps_card);
         CardView mallinfo_cards = findViewById(R.id.mallinfo_cards);
-        CardView lookcontact_card = findViewById(R.id.events_card);
-        CardView directory_card = findViewById(R.id.promotions_card);
+        CardView events_card = findViewById(R.id.events_card);
+        CardView promotions_card = findViewById(R.id.promotions_card);
 
         //add click listeners to cards
 //        statsCard.setOnClickListener(this);
@@ -50,8 +50,8 @@ public class MainActivity extends AppCompatActivity
         storefinder_card.setOnClickListener(this);
         mallmaps_card.setOnClickListener(this);
         mallinfo_cards.setOnClickListener(this);
-        lookcontact_card.setOnClickListener(this);
-        directory_card.setOnClickListener(this);
+        events_card.setOnClickListener(this);
+        promotions_card.setOnClickListener(this);
 
 
         viewPager = findViewById(R.id.viewPager);
