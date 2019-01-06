@@ -183,7 +183,7 @@ public class AddProducts extends AppCompatActivity {
                             mProgressDialog.show();
                             for(int i=0; i<productImagesArray.size(); i++){
                                 final Uri uri = Uri.fromFile(new File(productImagesArray.get(i)));
-                                final StorageReference storageReference = mStorageRef.child("images/" + uidNode + "/" + productKey + "/" +System.currentTimeMillis()/1000  + i +".jpg");
+                                final StorageReference storageReference = mStorageRef.child("images/" + uidNode + "/products/" + productKey + "/" +System.currentTimeMillis()/1000  + i +".jpg");
                                 final int finalImagesArraySize = productImagesArray.size() - 1;
                                 final int finalI = i;
 
