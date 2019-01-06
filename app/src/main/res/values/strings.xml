@@ -22,4 +22,5 @@
     <string name="text_search">Search</string>
     <string name="text_searchBy">Search by Name, Model or Brand</string>
     <string name="todo">To call data from firebase based on what is added in search string</string>
+    <string name="title_activity_single_product_detail">SingleProductDetailActivity</string>
 </resources>

@@ -50,10 +50,10 @@ public class Search extends AppCompatActivity {
         btn_search.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                recyclerView.removeAllViews();
-                productList = new ArrayList<>();
-                Query query = reference.child("Users");
                 final String searchValue = editSearch.getText().toString().toLowerCase();
+                recyclerView.removeAllViews();
+                Query query = reference.child("Users");
+                productList = new ArrayList<>();
                 query.addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {

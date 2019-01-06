@@ -1,0 +1,315 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:theme="@style/AppTheme.NoActionBar"
+    tools:context=".ProductDetail">
+
+    <ViewFlipper android:id="@+id/viewFlipper"
+        android:layout_width="fill_parent"
+        android:layout_height="250dp">
+
+        <RelativeLayout
+            android:id="@+id/loadingPanel"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center" >
+
+            <ProgressBar
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:indeterminate="true" />
+        </RelativeLayout>
+
+    </ViewFlipper>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/viewFlipper">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <android.support.v7.widget.CardView
+                android:id="@+id/productCardView1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="3dp"
+                android:layout_marginStart="3dp"
+                android:layout_marginEnd="3dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp">
+
+                    <TextView
+                        android:id="@+id/tv_productTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Title"
+                        android:textColor="@color/colorPrimaryDark"
+                        android:textStyle="bold"
+                        android:layout_marginStart="10dp"
+                        android:textSize="24sp"
+                        tools:ignore="RtlSymmetry" />
+
+                    <TextView
+                        android:id="@+id/tv_labelProductBrand"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Brand"
+                        android:textStyle="bold"
+                        android:textColor="@color/colorPrimaryDark"
+                        android:layout_below="@+id/tv_productTitle"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="10dp"
+                        tools:ignore="RtlSymmetry" />
+
+                    <TextView
+                        android:id="@+id/tv_productBrand"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="BRAND HERE"
+                        android:layout_marginTop="10dp"
+                        android:layout_below="@+id/tv_productTitle"
+                        android:layout_toEndOf="@+id/tv_labelProductBrand"
+                        android:layout_marginStart="15dp"
+                        tools:ignore="RtlSymmetry"
+                        />
+
+                    <TextView
+                        android:id="@+id/tv_labelProductType"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Type"
+                        android:textStyle="bold"
+                        android:textColor="@color/colorPrimaryDark"
+                        android:layout_below="@+id/tv_labelProductBrand"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="10dp"
+                        tools:ignore="RtlSymmetry" />
+                    <TextView
+                        android:id="@+id/tv_productType"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Type HERE"
+                        android:layout_below="@+id/tv_labelProductBrand"
+                        android:layout_toEndOf="@+id/tv_labelProductType"
+                        android:layout_marginStart="21dp"
+                        android:layout_marginTop="10dp"
+                        tools:ignore="RtlSymmetry"
+                        />
+
+                    <TextView
+                        android:id="@+id/tv_labelProductDescription"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Description"
+                        android:textStyle="bold"
+                        android:textColor="@color/colorPrimaryDark"
+                        android:layout_below="@+id/tv_labelProductType"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="10dp"
+                        tools:ignore="RtlSymmetry" />
+                    <TextView
+                        android:layout_width="250dp"
+                        android:layout_height="wrap_content"
+                        android:text="Description"
+                        android:layout_below="@+id/tv_labelProductDescription"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="5dp"
+                        tools:ignore="RtlSymmetry"
+                        />
+
+                </RelativeLayout>
+            </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView
+                android:id="@+id/productCardView2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:layout_margin="5dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginStart="10dp">
+
+                    <ImageView
+                        android:id="@+id/imageViewShop"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:src="@drawable/ic_shop"/>
+
+                    <TextView
+                        android:id="@+id/tv_labelShopText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Shop Details"
+                        android:textStyle="bold"
+                        android:textSize="22sp"
+                        android:textColor="@color/colorPrimaryDark"
+                        android:layout_toEndOf="@+id/imageViewShop"
+                        android:layout_marginStart="10dp"
+                        tools:ignore="RtlSymmetry" />
+
+                    <TextView
+                        android:id="@+id/tv_shopName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Type"
+                        android:textStyle="bold"
+                        android:textSize="18sp"
+                        android:textColor="@color/colorPrimaryDark"
+                        android:layout_below="@+id/imageViewShop"
+                        android:layout_marginTop="10dp"
+                        tools:ignore="RtlSymmetry" />
+
+                    <TextView
+                        android:id="@+id/tv_labelShopRepName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Rep Name"
+                        android:textStyle="bold"
+                        android:textColor="@color/colorPrimaryDark"
+                        android:layout_below="@+id/tv_shopName"
+                        android:layout_marginTop="10dp"
+                        tools:ignore="RtlSymmetry" />
+
+                    <TextView
+                        android:id="@+id/tv_shopRepName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Rep Name HERE"
+                        android:layout_below="@+id/tv_shopName"
+                        android:layout_toEndOf="@+id/tv_labelShopRepName"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="10dp"
+                        tools:ignore="RtlSymmetry" />
+
+                    <TextView
+                        android:id="@+id/tv_labelShopNumber"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Shop No."
+                        android:textStyle="bold"
+                        android:textColor="@color/colorPrimaryDark"
+                        android:layout_below="@+id/tv_labelShopRepName"
+                        android:layout_marginTop="10dp"
+                        tools:ignore="RtlSymmetry" />
+
+                    <TextView
+                        android:id="@+id/tv_shopNumber"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="D-123"
+                        android:layout_below="@+id/tv_labelShopRepName"
+                        android:layout_toEndOf="@+id/tv_labelShopRepName"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="10dp"
+                        tools:ignore="RtlSymmetry" />
+
+                    <TextView
+                        android:id="@+id/tv_labelShopFloor"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Floor"
+                        android:textStyle="bold"
+                        android:textColor="@color/colorPrimaryDark"
+                        android:layout_toEndOf="@+id/tv_shopNumber"
+                        android:layout_below="@+id/tv_labelShopRepName"
+                        android:layout_marginStart="15dp"
+                        android:layout_marginTop="10dp"
+                        tools:ignore="RtlSymmetry" />
+
+                    <TextView
+                        android:id="@+id/tv_shopFloor"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="LB"
+                        android:layout_below="@+id/tv_labelShopRepName"
+                        android:layout_toEndOf="@+id/tv_labelShopFloor"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="10dp"
+                        tools:ignore="RtlSymmetry" />
+
+                    <TextView
+                        android:id="@+id/tv_labelShopContact"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Contact"
+                        android:textStyle="bold"
+                        android:textColor="@color/colorPrimaryDark"
+                        android:layout_below="@+id/tv_labelShopFloor"
+                        android:layout_marginTop="10dp"
+                        tools:ignore="RtlSymmetry" />
+
+                    <TextView
+                        android:id="@+id/tv_shopContact"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="03123123123"
+                        android:layout_below="@+id/tv_labelShopFloor"
+                        android:layout_toEndOf="@+id/tv_labelShopContact"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="10dp"
+                        tools:ignore="RtlSymmetry" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/tv_labelShopFloor"
+                        android:layout_toEndOf="@+id/tv_shopContact"
+                        android:text="|"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginStart="5dp"/>
+
+                    <TextView
+                        android:id="@+id/tv_shopEmail"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="a@ask.com"
+                        android:layout_below="@+id/tv_labelShopFloor"
+                        android:layout_toEndOf="@+id/tv_shopContact"
+                        android:layout_marginStart="15dp"
+                        android:layout_marginTop="10dp"
+                        tools:ignore="RtlSymmetry" />
+
+                    <TextView
+                        android:id="@+id/tv_labelShopType"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Type"
+                        android:textStyle="bold"
+                        android:textColor="@color/colorPrimaryDark"
+                        android:layout_below="@+id/tv_labelShopContact"
+                        android:layout_marginTop="10dp"
+                        tools:ignore="RtlSymmetry" />
+
+                    <TextView
+                        android:id="@+id/tv_shopType"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Wholesale"
+                        android:layout_below="@+id/tv_labelShopContact"
+                        android:layout_toEndOf="@+id/tv_labelShopContact"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="10dp"
+                        tools:ignore="RtlSymmetry" />
+                </RelativeLayout>
+            </android.support.v7.widget.CardView>
+        </LinearLayout>
+
+
+    </ScrollView>
+
+
+
+</RelativeLayout>
