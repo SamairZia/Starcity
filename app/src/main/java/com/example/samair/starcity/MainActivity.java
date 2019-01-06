@@ -16,10 +16,10 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.example.samair.starcity.Adapter.ViewPagerAdapter;
-import com.example.samair.starcity.Dashboard.Event;
+import com.example.samair.starcity.Dashboard.Events;
 import com.example.samair.starcity.Dashboard.MallInfo;
 import com.example.samair.starcity.Dashboard.MallMap;
-import com.example.samair.starcity.Dashboard.Promotion;
+import com.example.samair.starcity.Dashboard.Promotions;
 import com.example.samair.starcity.Dashboard.Search;
 import com.example.samair.starcity.Dashboard.StoreFinder;
 import com.example.samair.starcity.User.Login;
@@ -41,8 +41,8 @@ public class MainActivity extends AppCompatActivity
         CardView storefinder_card = findViewById(R.id.storefinder_card);
         CardView mallmaps_card = findViewById(R.id.mallmaps_card);
         CardView mallinfo_cards = findViewById(R.id.mallinfo_cards);
-        CardView lookcontact_card = findViewById(R.id.lookcontact_card);
-        CardView directory_card = findViewById(R.id.directory_card);
+        CardView lookcontact_card = findViewById(R.id.events_card);
+        CardView directory_card = findViewById(R.id.promotions_card);
 
         //add click listeners to cards
 //        statsCard.setOnClickListener(this);
@@ -166,12 +166,12 @@ public class MainActivity extends AppCompatActivity
                 i = new Intent(this, MallInfo.class);
                 startActivity(i);
                 break;
-            case R.id.lookcontact_card:
-                i = new Intent(this, Promotion.class);
+            case R.id.events_card:
+                i = new Intent(this, Promotions.class);
                 startActivity(i);
                 break;
-            case R.id.directory_card:
-                i = new Intent(this, Event.class);
+            case R.id.promotions_card:
+                i = new Intent(this, Events.class);
                 startActivity(i);
                 break;
             default:

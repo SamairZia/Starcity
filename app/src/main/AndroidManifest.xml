@@ -45,9 +45,9 @@
         </activity>
         <activity android:name=".Dashboard.MallInfo">
         </activity>
-        <activity android:name=".Dashboard.Promotion">
+        <activity android:name=".Dashboard.Promotions">
         </activity>
-        <activity android:name=".Dashboard.Event">
+        <activity android:name=".Dashboard.Events">
         </activity>
         <activity
             android:name=".LoginNew"
