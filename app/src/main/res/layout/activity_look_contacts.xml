@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -7,9 +7,42 @@
     android:layout_height="match_parent"
     tools:context="com.example.samair.starcity.Dashboard.Promotions">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Look for Contacts"/>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
 
-</android.support.constraint.ConstraintLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="180dp"
+                android:src="@drawable/event"
+                android:layout_marginTop="50dp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Milad un Nabi"
+                android:textStyle="bold"
+                android:textSize="30sp"
+                android:textAlignment="center"
+                android:padding="10dp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="29 jan 2019 (basement floor)"
+                android:textStyle="bold"
+                android:textSize="20sp"
+                android:textAlignment="center"
+                android:padding="10dp"/>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</RelativeLayout>
