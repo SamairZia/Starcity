@@ -1,6 +1,7 @@
 package com.example.samair.starcity.Adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
@@ -12,6 +13,7 @@ import android.widget.TextView;
 
 import com.bumptech.glide.request.RequestOptions;
 import com.example.samair.starcity.Library.GlideApp;
+import com.example.samair.starcity.ProductDetail;
 import com.example.samair.starcity.R;
 
 import java.util.ArrayList;
@@ -46,17 +48,31 @@ public class ProductsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
         ((Holder) holder).tv_model.setText(list.get(position).get(1));
         ((Holder) holder).tv_type.setText(list.get(position).get(2));
 
-        // Reference to an image file in Cloud Storage
+        final String uID = list.get(position).get(3);
+        final String productID = list.get(position).get(4);
+
+        // Reference to an image file directly loading
 
         RequestOptions options = new RequestOptions()
                 .centerCrop()
-                .placeholder(R.drawable.noimage)
+                .placeholder(R.drawable.progressbar)
                 .error(R.drawable.noimage);
 
         GlideApp.with(context /* context */)
-                .load(list.get(position).get(3))
-                .apply(options)
+                .load(list.get(position).get(5))
+                .centerCrop()
+                .thumbnail(GlideApp.with(context).load(R.drawable.progressbar))
                 .into(((Holder) holder).iv);
+
+        ((Holder) holder).cardView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent myIntent = new Intent(context, ProductDetail.class);
+                myIntent.putExtra("uID", uID);
+                myIntent.putExtra("productID", productID);
+                context.startActivity(myIntent);
+            }
+        });
 
     }
 

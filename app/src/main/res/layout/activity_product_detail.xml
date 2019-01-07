@@ -1,34 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:theme="@style/AppTheme.NoActionBar"
-    tools:context=".ProductDetail">
+    tools:context=".ProductDetail"
+    android:orientation="vertical">
 
-    <ViewFlipper android:id="@+id/viewFlipper"
-        android:layout_width="fill_parent"
+    <RelativeLayout
+        android:id="@+id/progressProductDetail"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center">
+
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:indeterminate="true"/>
+
+    </RelativeLayout>
+
+    <ViewFlipper
+        android:id="@+id/viewFlipperProductImages"
+        android:layout_width="match_parent"
         android:layout_height="250dp">
 
-        <RelativeLayout
-            android:id="@+id/loadingPanel"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center" >
+        <!--<RelativeLayout-->
+            <!--android:id="@+id/progressProductImages"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:gravity="center">-->
 
-            <ProgressBar
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:indeterminate="true" />
-        </RelativeLayout>
+            <!--<ProgressBar-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:indeterminate="true"/>-->
+
+        <!--</RelativeLayout>-->
 
     </ViewFlipper>
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/viewFlipper">
+        android:layout_height="wrap_content">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -117,9 +131,10 @@
                         android:layout_marginTop="10dp"
                         tools:ignore="RtlSymmetry" />
                     <TextView
+                        android:id="@+id/productDescription"
                         android:layout_width="250dp"
                         android:layout_height="wrap_content"
-                        android:text="Description"
+                        android:text="Description goes here"
                         android:layout_below="@+id/tv_labelProductDescription"
                         android:layout_marginStart="10dp"
                         android:layout_marginTop="5dp"
@@ -165,9 +180,10 @@
                         android:id="@+id/tv_shopName"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Type"
-                        android:textStyle="bold"
-                        android:textSize="18sp"
+                        android:text="Name"
+                        android:textStyle="bold|italic"
+                        android:textSize="20sp"
+
                         android:textColor="@color/colorPrimaryDark"
                         android:layout_below="@+id/imageViewShop"
                         android:layout_marginTop="10dp"
@@ -312,4 +328,4 @@
 
 
 
-</RelativeLayout>
+</LinearLayout>

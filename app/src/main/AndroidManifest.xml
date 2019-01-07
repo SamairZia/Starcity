@@ -38,9 +38,6 @@
         <activity android:name=".Dashboard.MallInfo" />
         <activity android:name=".Dashboard.Promotions" />
         <activity android:name=".Dashboard.Events" />
-        <activity
-            android:name=".LoginNew"
-            android:label="@string/title_activity_login_new" />
         <activity android:name=".User.ShowProducts" />
         <activity android:name=".User.AddProducts" />
         <activity android:name=".ProductDetail"></activity>

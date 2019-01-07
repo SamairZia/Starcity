@@ -68,6 +68,8 @@ public class Search extends AppCompatActivity {
                                             productInfo.add(product.child("Product Name").getValue().toString());
                                             productInfo.add(product.child("Product Manufacturer").getValue().toString());
                                             productInfo.add(product.child("Product Type").getValue().toString());
+                                            productInfo.add(val.getKey()); // storing uID
+                                            productInfo.add(product.getKey()); // storing productID
                                             if(product.child("imagesUrl").exists()) {
                                                 for (DataSnapshot imageUrl : product.child("imagesUrl").getChildren()) {
                                                     productInfo.add(imageUrl.getValue().toString());
