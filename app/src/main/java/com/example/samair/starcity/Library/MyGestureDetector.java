@@ -7,6 +7,8 @@ import android.view.animation.AnimationUtils;
 import android.widget.ViewFlipper;
 import android.R.anim;
 
+import com.example.samair.starcity.R;
+
 public class MyGestureDetector extends GestureDetector.SimpleOnGestureListener {
 
     private static final int SWIPE_MIN_DISTANCE = 120;
@@ -27,13 +29,13 @@ public class MyGestureDetector extends GestureDetector.SimpleOnGestureListener {
             return false;
         if (e1.getX() - e2.getX() > SWIPE_MIN_DISTANCE
                 && Math.abs(velocityX) > SWIPE_THRESHOLD_VELOCITY) {
-            flipper.setInAnimation(AnimationUtils.loadAnimation(context, anim.fade_in));
-            flipper.setOutAnimation(AnimationUtils.loadAnimation(context, anim.fade_out));
+            flipper.setInAnimation(AnimationUtils.loadAnimation(context, R.anim.slide_from_right));
+            flipper.setOutAnimation(AnimationUtils.loadAnimation(context, R.anim.slide_to_left));
             flipper.showNext();
         } else if (e2.getX() - e1.getX() > SWIPE_MIN_DISTANCE
                 && Math.abs(velocityX) > SWIPE_THRESHOLD_VELOCITY) {
-            flipper.setInAnimation(AnimationUtils.loadAnimation(context, anim.fade_in));
-            flipper.setOutAnimation(AnimationUtils.loadAnimation(context, anim.fade_out));
+            flipper.setInAnimation(AnimationUtils.loadAnimation(context, R.anim.slide_from_left));
+            flipper.setOutAnimation(AnimationUtils.loadAnimation(context, R.anim.slide_to_right));
             flipper.showPrevious();
         }
         return super.onFling(e1, e2, velocityX, velocityY);

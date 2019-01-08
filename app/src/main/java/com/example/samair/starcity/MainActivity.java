@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.CardView;
+import android.view.GestureDetector;
+import android.view.MotionEvent;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -14,14 +16,15 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ViewFlipper;
 
-import com.example.samair.starcity.Adapter.ViewPagerAdapter;
 import com.example.samair.starcity.Dashboard.Events;
 import com.example.samair.starcity.Dashboard.MallInfo;
 import com.example.samair.starcity.Dashboard.MallMap;
 import com.example.samair.starcity.Dashboard.Promotions;
 import com.example.samair.starcity.Dashboard.Search;
 import com.example.samair.starcity.Dashboard.StoreFinder;
+import com.example.samair.starcity.Library.MyGestureDetector;
 import com.example.samair.starcity.User.Login;
 import com.example.samair.starcity.User.Signup;
 
@@ -44,6 +47,7 @@ public class MainActivity extends AppCompatActivity
         CardView events_card = findViewById(R.id.events_card);
         CardView promotions_card = findViewById(R.id.promotions_card);
 
+        final ViewFlipper viewFlipper = findViewById(R.id.viewFlipperSlider);
         //add click listeners to cards
 //        statsCard.setOnClickListener(this);
         search_card.setOnClickListener(this);
@@ -54,21 +58,6 @@ public class MainActivity extends AppCompatActivity
         promotions_card.setOnClickListener(this);
 
 
-        viewPager = findViewById(R.id.viewPager);
-
-        ViewPagerAdapter viewPagerAdapter = new ViewPagerAdapter(this);
-
-        viewPager.setAdapter(viewPagerAdapter);
-
-//        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-//        fab.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-//                        .setAction("Action", null).show();
-//            }
-//        });
-
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -77,6 +66,21 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+
+        final GestureDetector gestureDetector = new GestureDetector(new MyGestureDetector(viewFlipper, this));
+
+        viewFlipper.setOnTouchListener(new View.OnTouchListener() {
+
+            public boolean onTouch(View v, MotionEvent event) {
+                if (gestureDetector.onTouchEvent(event)) {
+                    return false;
+                } else {
+                    return true;
+                }
+            }
+        });
+
     }
 
     @Override
@@ -92,7 +96,7 @@ public class MainActivity extends AppCompatActivity
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.main, menu);
+//        getMenuInflater().inflate(R.menu.main, menu);
         return true;
     }
 
@@ -139,6 +143,7 @@ public class MainActivity extends AppCompatActivity
 //        } else if (id == R.id.nav_send) {
 //
 //        }
+
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
