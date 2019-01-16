@@ -25,4 +25,5 @@
     <string name="title_activity_single_product_detail">SingleProductDetailActivity</string>
     <string name="provide_verify_label">Please provide 12 digit Verification Code</string>
     <string name="title_activity_maps">Map</string>
+    <string name="get_directions"><u>Get Directions</u></string>
 </resources>

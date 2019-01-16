@@ -20,7 +20,7 @@ import android.widget.ViewFlipper;
 
 import com.example.samair.starcity.Dashboard.Events;
 import com.example.samair.starcity.Dashboard.MallInfo;
-import com.example.samair.starcity.Dashboard.MallMap;
+import com.example.samair.starcity.Dashboard.MapsActivity;
 import com.example.samair.starcity.Dashboard.Promotions;
 import com.example.samair.starcity.Dashboard.Search;
 import com.example.samair.starcity.Dashboard.StoreFinder;
@@ -160,7 +160,7 @@ public class MainActivity extends AppCompatActivity
                 startActivity(i);
                 break;
             case R.id.mallmaps_card:
-                i = new Intent(this, MallMap.class);
+                i = new Intent(this, MapsActivity.class);
                 startActivity(i);
                 break;
             case R.id.mallinfo_cards:

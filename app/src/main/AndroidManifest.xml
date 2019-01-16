@@ -40,7 +40,6 @@
         <activity android:name=".Contact" />
         <activity android:name=".Dashboard.Search" />
         <activity android:name=".Dashboard.StoreFinder" />
-        <activity android:name=".Dashboard.MallMap" />
         <activity android:name=".Dashboard.MallInfo" />
         <activity android:name=".Dashboard.Promotions" />
         <activity android:name=".Dashboard.Events" />
@@ -62,7 +61,7 @@
 
         <activity
             android:name=".Dashboard.MapsActivity"
-            android:label="@string/title_activity_maps"></activity>
+            android:label="@string/title_activity_maps" />
     </application>
 
 </manifest>
