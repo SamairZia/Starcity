@@ -56,13 +56,16 @@ public class Signup extends AppCompatActivity {
         spinnerSelectType = findViewById(R.id.spinnerSelectType);
 
         mAuth = FirebaseAuth.getInstance();
-        mDatabaseReference = FirebaseDatabase.getInstance().getReference().child("Users");
+        mDatabaseReference = FirebaseDatabase.getInstance().getReference();
 
         floorAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,floors);
         typeAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,type);
 
         spinnerSelectFloor.setAdapter(floorAdapter);
         spinnerSelectType.setAdapter(typeAdapter);
+
+        Intent mIntent = getIntent();
+        final String keyPin = mIntent.getStringExtra("keyPin");
 
         spinnerSelectFloor.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -128,8 +131,8 @@ public class Signup extends AppCompatActivity {
                 final String ushopNo = shopNimber_signup.getText().toString().trim();
                 final String upass = password_signup.getText().toString().trim();
                 final String uconfirmPass = confirmPassword_signup.getText().toString().trim();
-                final String ushopFloor = floor.toString().trim();
-                final String ushopType = typeString.toString().trim();
+                final String ushopFloor = floor.trim();
+                final String ushopType = typeString.trim();
 
                 mAuth.createUserWithEmailAndPassword(uemail, upass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
@@ -149,12 +152,13 @@ public class Signup extends AppCompatActivity {
                             signupMap.put("Shop Type",ushopType);
                             signupMap.put("Password",upass);
 
-                            mDatabaseReference.child(newUserUID).child("Shop Details").setValue(signupMap).addOnCompleteListener(new OnCompleteListener<Void>() {
+                            mDatabaseReference.child("Users/"+newUserUID).child("Shop Details").setValue(signupMap).addOnCompleteListener(new OnCompleteListener<Void>() {
                                 @Override
                                 public void onComplete(@NonNull Task<Void> task) {
 
                                     if (task.isSuccessful()){
                                         Toast.makeText(getApplicationContext() , "SignUp Successful" , Toast.LENGTH_LONG).show();
+                                        mDatabaseReference.child("Verify/"+keyPin).child("used").setValue("1");
                                         finish();
                                         openShowProducts();
                                     }

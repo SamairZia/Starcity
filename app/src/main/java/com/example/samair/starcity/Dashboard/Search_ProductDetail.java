@@ -1,13 +1,11 @@
-package com.example.samair.starcity;
+package com.example.samair.starcity.Dashboard;
 
 import android.annotation.SuppressLint;
-import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.text.Layout;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.View;
@@ -16,11 +14,11 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.ViewFlipper;
 
-import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 
 import com.example.samair.starcity.Library.GlideApp;
 import com.example.samair.starcity.Library.MyGestureDetector;
+import com.example.samair.starcity.R;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -28,9 +26,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
-import java.util.ArrayList;
-
-public class ProductDetail extends AppCompatActivity {
+public class Search_ProductDetail extends AppCompatActivity {
 
 
     private DatabaseReference reference;
@@ -158,10 +154,10 @@ public class ProductDetail extends AppCompatActivity {
                         for (DataSnapshot imageUrl : dataSnapshot.child("imagesUrl").getChildren()) {
                             ImageView image = new ImageView(getApplicationContext());
 
-                            GlideApp.with(ProductDetail.this)
+                            GlideApp.with(Search_ProductDetail.this)
                                     .load(imageUrl.getValue().toString())
                                     .centerCrop()
-                                    .thumbnail(GlideApp.with(ProductDetail.this).load(R.drawable.progressbar))
+                                    .thumbnail(GlideApp.with(Search_ProductDetail.this).load(R.drawable.progressbar))
                                     .into(image);
                             viewFlipper.addView(image);
 
@@ -169,7 +165,7 @@ public class ProductDetail extends AppCompatActivity {
 
                     }else {
                         ImageView image = new ImageView(getApplicationContext());
-                        GlideApp.with(ProductDetail.this)
+                        GlideApp.with(Search_ProductDetail.this)
                                 .load("https://firebasestorage.googleapis.com/v0/b/starcity-4d6e6.appspot.com/o/No_Image.png?alt=media&token=a99878fd-807c-4982-a156-7d118f2f7732")                                .apply(options)
                                 .into(image);
                         viewFlipper.addView(image);

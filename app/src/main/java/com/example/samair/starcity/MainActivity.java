@@ -26,7 +26,7 @@ import com.example.samair.starcity.Dashboard.Search;
 import com.example.samair.starcity.Dashboard.StoreFinder;
 import com.example.samair.starcity.Library.MyGestureDetector;
 import com.example.samair.starcity.User.Login;
-import com.example.samair.starcity.User.Signup;
+import com.example.samair.starcity.User.VerifyAuth;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener , View.OnClickListener{
@@ -126,12 +126,8 @@ public class MainActivity extends AppCompatActivity
             startActivity(intentLogin);
 
         } else if (id == R.id.nav_signup) {
-            Intent intentSignUp = new Intent(this, Signup.class);
+            Intent intentSignUp = new Intent(this, VerifyAuth.class);
             startActivity(intentSignUp);
-
-        } else if (id == R.id.nav_about) {
-            Intent intentAbout = new Intent(this, About.class);
-            startActivity(intentAbout);
 
         } else if (id == R.id.nav_contact) {
             Intent intentContact = new Intent(this, Contact.class);

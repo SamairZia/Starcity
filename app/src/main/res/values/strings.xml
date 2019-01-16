@@ -23,4 +23,6 @@
     <string name="text_searchBy">Search by Name, Model or Brand</string>
     <string name="todo">To call data from firebase based on what is added in search string</string>
     <string name="title_activity_single_product_detail">SingleProductDetailActivity</string>
+    <string name="provide_verify_label">Please provide 12 digit Verification Code</string>
+    <string name="title_activity_maps">Map</string>
 </resources>
