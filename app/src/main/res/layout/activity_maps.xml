@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="12dp"
+    android:layout_margin="12dp"
     tools:context="com.example.samair.starcity.Dashboard.MapsActivity"
     >
 
@@ -29,6 +29,8 @@
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+
+        android:layout_marginTop="12dp"
         android:layout_below="@+id/tv_mapDirection"
         android:src="@drawable/starcity_map"/>
 

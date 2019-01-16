@@ -20,8 +20,6 @@ import java.util.Locale;
 
 public class MapsActivity extends AppCompatActivity implements OnMapReadyCallback {
 
-    private GoogleMap mMap;
-    private TextView mapText;
     private double lat = 24.8642478, lng = 67.0259983;
 
     @Override
@@ -29,7 +27,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
 
-        mapText = findViewById(R.id.tv_mapDirection);
+        TextView mapText = findViewById(R.id.tv_mapDirection);
 
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
@@ -39,8 +37,9 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         mapText.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String uri = String.format(Locale.ENGLISH, "geo:%f,%f", lat, lng);
+                String uri = String.format(Locale.ENGLISH, "google.navigation:q=" + lat + "," + lng);
                 Intent mIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(uri));
+                mIntent.setPackage("com.google.android.apps.maps");
                 startActivity(mIntent);
             }
         });
@@ -57,7 +56,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
      */
     @Override
     public void onMapReady(GoogleMap googleMap) {
-        mMap = googleMap;
+        GoogleMap mMap = googleMap;
 
         // Add a marker in Sydney and move the camera
         LatLng starCity = new LatLng(lat, lng);
