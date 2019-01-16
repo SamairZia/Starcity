@@ -31,7 +31,6 @@ public class StoreFinderAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
     @NonNull
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        Log.d("TAGShlogCreate", "Called");
         View v = LayoutInflater.from(parent.getContext()).
                 inflate(R.layout.recycler_view_store_finder, parent, false);
         return new Holder(v);
@@ -39,7 +38,6 @@ public class StoreFinderAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
-        Log.d("TAGShop1", "This called");
 
 //        ((Holder) holder).tv_alphabetStore.setText(list.get(position).get(0));
 

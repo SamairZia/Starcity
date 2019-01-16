@@ -13,7 +13,7 @@ import android.widget.TextView;
 
 import com.bumptech.glide.request.RequestOptions;
 import com.example.samair.starcity.Library.GlideApp;
-import com.example.samair.starcity.ProductDetail;
+import com.example.samair.starcity.Dashboard.Search_ProductDetail;
 import com.example.samair.starcity.R;
 
 import java.util.ArrayList;
@@ -67,7 +67,7 @@ public class ProductsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
         ((Holder) holder).cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent myIntent = new Intent(context, ProductDetail.class);
+                Intent myIntent = new Intent(context, Search_ProductDetail.class);
                 myIntent.putExtra("uID", uID);
                 myIntent.putExtra("productID", productID);
                 context.startActivity(myIntent);
