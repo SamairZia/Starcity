@@ -1,4 +1,4 @@
-package com.example.samair.starcity;
+package com.example.zbt.starcity;
 
 import org.junit.Test;
 

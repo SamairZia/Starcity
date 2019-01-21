@@ -1,4 +1,4 @@
-package com.example.samair.starcity.User;
+package com.example.zbt.starcity.User;
 
 import android.content.Intent;
 import android.support.annotation.NonNull;
@@ -12,7 +12,7 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-import com.example.samair.starcity.R;
+import com.example.zbt.starcity.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;

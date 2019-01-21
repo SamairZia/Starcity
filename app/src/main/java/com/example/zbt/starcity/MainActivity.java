@@ -1,4 +1,4 @@
-package com.example.samair.starcity;
+package com.example.zbt.starcity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -18,15 +18,15 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ViewFlipper;
 
-import com.example.samair.starcity.Dashboard.Events;
-import com.example.samair.starcity.Dashboard.MallInfo;
-import com.example.samair.starcity.Dashboard.MapsActivity;
-import com.example.samair.starcity.Dashboard.Promotions;
-import com.example.samair.starcity.Dashboard.Search;
-import com.example.samair.starcity.Dashboard.StoreFinder;
-import com.example.samair.starcity.Library.MyGestureDetector;
-import com.example.samair.starcity.User.Login;
-import com.example.samair.starcity.User.VerifyAuth;
+import com.example.zbt.starcity.Dashboard.Events;
+import com.example.zbt.starcity.Dashboard.MallInfo;
+import com.example.zbt.starcity.Dashboard.MapsActivity;
+import com.example.zbt.starcity.Dashboard.Promotions;
+import com.example.zbt.starcity.Dashboard.Search;
+import com.example.zbt.starcity.Dashboard.StoreFinder;
+import com.example.zbt.starcity.Library.MyGestureDetector;
+import com.example.zbt.starcity.User.Login;
+import com.example.zbt.starcity.User.VerifyAuth;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener , View.OnClickListener{

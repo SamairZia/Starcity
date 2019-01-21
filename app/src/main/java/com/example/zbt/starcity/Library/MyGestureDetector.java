@@ -1,13 +1,12 @@
-package com.example.samair.starcity.Library;
+package com.example.zbt.starcity.Library;
 
 import android.content.Context;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.animation.AnimationUtils;
 import android.widget.ViewFlipper;
-import android.R.anim;
 
-import com.example.samair.starcity.R;
+import com.example.zbt.starcity.R;
 
 public class MyGestureDetector extends GestureDetector.SimpleOnGestureListener {
 

@@ -1,4 +1,4 @@
-package com.example.samair.starcity.Adapter;
+package com.example.zbt.starcity.Adapter;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
@@ -9,7 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.example.samair.starcity.R;
+import com.example.zbt.starcity.R;
 
 import java.util.ArrayList;
 

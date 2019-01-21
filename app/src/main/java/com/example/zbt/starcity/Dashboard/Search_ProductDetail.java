@@ -1,4 +1,4 @@
-package com.example.samair.starcity.Dashboard;
+package com.example.zbt.starcity.Dashboard;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
@@ -16,9 +16,9 @@ import android.widget.ViewFlipper;
 
 import com.bumptech.glide.request.RequestOptions;
 
-import com.example.samair.starcity.Library.GlideApp;
-import com.example.samair.starcity.Library.MyGestureDetector;
-import com.example.samair.starcity.R;
+import com.example.zbt.starcity.Library.GlideApp;
+import com.example.zbt.starcity.Library.MyGestureDetector;
+import com.example.zbt.starcity.R;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;

@@ -1,4 +1,4 @@
-package com.example.samair.starcity.Dashboard;
+package com.example.zbt.starcity.Dashboard;
 
 import android.content.Intent;
 import android.net.Uri;
@@ -7,7 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.TextView;
 
-import com.example.samair.starcity.R;
+import com.example.zbt.starcity.R;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;

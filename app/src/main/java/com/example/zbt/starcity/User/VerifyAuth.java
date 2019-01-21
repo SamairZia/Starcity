@@ -1,4 +1,4 @@
-package com.example.samair.starcity.User;
+package com.example.zbt.starcity.User;
 
 import android.content.Context;
 import android.content.Intent;
@@ -18,8 +18,8 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.bumptech.glide.GenericTransitionOptions;
-import com.example.samair.starcity.Library.GlideApp;
-import com.example.samair.starcity.R;
+import com.example.zbt.starcity.Library.GlideApp;
+import com.example.zbt.starcity.R;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;

@@ -1,15 +1,15 @@
-package com.example.samair.starcity.Dashboard;
+package com.example.zbt.starcity.Dashboard;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-import com.example.samair.starcity.R;
+import com.example.zbt.starcity.R;
 
-public class Events extends AppCompatActivity {
+public class Promotions extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_promotions);
+        setContentView(R.layout.activity_look_contacts);
     }
 }

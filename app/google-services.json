@@ -10,10 +10,18 @@
       "client_info": {
         "mobilesdk_app_id": "1:237441922531:android:b550bc8225aafad1",
         "android_client_info": {
-          "package_name": "com.example.samair.starcity"
+          "package_name": "com.example.zbt.starcity"
         }
       },
       "oauth_client": [
+        {
+          "client_id": "237441922531-3l50mdorsmg96akfg1lj4ssn96olv1nh.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.zbt.starcity",
+            "certificate_hash": "bdda6de65809f1ee876f21b3acbc88e52b4f49ab"
+          }
+        },
         {
           "client_id": "237441922531-c7at53uf3sh6ujslo8g7o9fndk6llnv6.apps.googleusercontent.com",
           "client_type": 3
@@ -29,8 +37,13 @@
           "status": 1
         },
         "appinvite_service": {
-          "status": 1,
-          "other_platform_oauth_client": []
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "237441922531-c7at53uf3sh6ujslo8g7o9fndk6llnv6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         },
         "ads_service": {
           "status": 2

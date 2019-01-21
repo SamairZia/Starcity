@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_margin="12dp"
-    tools:context="com.example.samair.starcity.Dashboard.MapsActivity"
+    tools:context="com.example.zbt.starcity.Dashboard.MapsActivity"
     >
 
     <fragment

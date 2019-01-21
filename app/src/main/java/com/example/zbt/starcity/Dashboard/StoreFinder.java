@@ -1,17 +1,15 @@
-package com.example.samair.starcity.Dashboard;
+package com.example.zbt.starcity.Dashboard;
 
-import android.renderscript.Sampler;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.samair.starcity.Adapter.StoreFinderAdapter;
-import com.example.samair.starcity.R;
+import com.example.zbt.starcity.Adapter.StoreFinderAdapter;
+import com.example.zbt.starcity.R;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -22,7 +20,6 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
-import java.util.HashMap;
 
 public class StoreFinder extends AppCompatActivity {
 

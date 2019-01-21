@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.example.samair.starcity">
+    package="com.example.zbt.starcity">
 
     <!-- To auto-complete the email text field in the Login form with the user's emails -->
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
@@ -26,7 +26,7 @@
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
         <activity
-            android:name=".MainActivity"
+            android:name="com.example.zbt.starcity.MainActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
@@ -35,18 +35,18 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".User.Login" />
-        <activity android:name=".User.Signup" />
-        <activity android:name=".Contact" />
-        <activity android:name=".Dashboard.Search" />
-        <activity android:name=".Dashboard.StoreFinder" />
-        <activity android:name=".Dashboard.MallInfo" />
-        <activity android:name=".Dashboard.Promotions" />
-        <activity android:name=".Dashboard.Events" />
-        <activity android:name=".User.ShowProducts" />
-        <activity android:name=".User.AddProducts" />
-        <activity android:name=".Dashboard.Search_ProductDetail" />
-        <activity android:name=".User.VerifyAuth" />
+        <activity android:name="com.example.zbt.starcity.User.Login" />
+        <activity android:name="com.example.zbt.starcity.User.Signup" />
+        <activity android:name="com.example.zbt.starcity.Contact" />
+        <activity android:name="com.example.zbt.starcity.Dashboard.Search" />
+        <activity android:name="com.example.zbt.starcity.Dashboard.StoreFinder" />
+        <activity android:name="com.example.zbt.starcity.Dashboard.MallInfo" />
+        <activity android:name="com.example.zbt.starcity.Dashboard.Promotions" />
+        <activity android:name="com.example.zbt.starcity.Dashboard.Events" />
+        <activity android:name="com.example.zbt.starcity.User.ShowProducts" />
+        <activity android:name="com.example.zbt.starcity.User.AddProducts" />
+        <activity android:name="com.example.zbt.starcity.Dashboard.Search_ProductDetail" />
+        <activity android:name="com.example.zbt.starcity.User.VerifyAuth" />
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").
@@ -60,7 +60,7 @@
             android:value="@string/google_maps_key" />
 
         <activity
-            android:name=".Dashboard.MapsActivity"
+            android:name="com.example.zbt.starcity.Dashboard.MapsActivity"
             android:label="@string/title_activity_maps" />
     </application>
 

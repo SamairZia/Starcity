@@ -1,4 +1,4 @@
-package com.example.samair.starcity.Adapter;
+package com.example.zbt.starcity.Adapter;
 
 import android.content.Context;
 import android.content.Intent;
@@ -12,9 +12,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.request.RequestOptions;
-import com.example.samair.starcity.Library.GlideApp;
-import com.example.samair.starcity.Dashboard.Search_ProductDetail;
-import com.example.samair.starcity.R;
+import com.example.zbt.starcity.Library.GlideApp;
+import com.example.zbt.starcity.Dashboard.Search_ProductDetail;
+import com.example.zbt.starcity.R;
 
 import java.util.ArrayList;
 
